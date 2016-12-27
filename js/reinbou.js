@@ -30,7 +30,7 @@ function draw() {
 	}
 }
 
-funtion touchMoved(){
+function touchMoved(){
 	drawSelected(touchX, touchY);
 }
 
