@@ -103,21 +103,16 @@ body{
 }
 
       
+/* radio selection */
 
-      
+input[type=radio]:checked ~ .check {
+  border: 1rem solid $color-selected;
+}
 
-      /* radio selection */
+input[type=radio]:checked ~ .check::before{
+  background: $color-selected;
+}
 
-      
-
-      input[type=radio]:checked ~ .check {
-        border: 1rem solid $color-selected;
-      }
-
-      input[type=radio]:checked ~ .check::before{
-        background: $color-selected;
-      }
-
-      input[type=radio]:checked ~ label{
-        color: $color-selected;
-      }
+input[type=radio]:checked ~ label{
+  color: $color-selected;
+}
