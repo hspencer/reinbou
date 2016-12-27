@@ -5,20 +5,18 @@ this is the f**king reinbou color selector **
 */
 
 
-var xsp, ysp, col, hueBitmap;
+var d, col, hueBitmap;
 
 function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
 	colorMode(HSB, height, 1, 1, 1);
 	rb.parent('reinbou');
-	xsp = width / 10;
-	ysp = height / 10;
+	d = width / 15;
 	ellipseMode(CENTER);
 	mode = true;
 	hueBitmap = loadImage("img/hueBitmap.png");
 	col = color(0);
 }
-
 
 
 function windowResized() {
@@ -32,6 +30,10 @@ function draw() {
 	}
 }
 
+funtion touchMoved(){
+	drawSelected(touchX, touchY);
+}
+
 function getColor(xpos, ypos) {
 	colorMode(RGB);
 	col = get(xpos, ypos);
@@ -39,7 +41,6 @@ function getColor(xpos, ypos) {
 }
 
 function drawSelected(xpos, ypos) {
-	d = xsp * 2;
 	getColor(mouseX, mouseY);
 	stroke(0);
 	strokeWeight(5);
