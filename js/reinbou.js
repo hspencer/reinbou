@@ -11,13 +11,12 @@ function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
 	colorMode(HSB, height, 1, 1, 1);
 	rb.parent('reinbou');
-	d = width / 15;
+	d = width / 5;
 	ellipseMode(CENTER);
 	mode = true;
 	hueBitmap = loadImage("img/hueBitmap.png");
 	col = color(0);
 }
-
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
@@ -25,12 +24,10 @@ function windowResized() {
 
 function draw() {
 	image(hueBitmap, 0, 0, width, height);
-	if(mouseIsPressed){
-		drawSelected(mouseX, mouseY);
-	}
 }
 
 function touchMoved(){
+	image(hueBitmap, 0, 0, width, height);
 	drawSelected(touchX, touchY);
 }
 
