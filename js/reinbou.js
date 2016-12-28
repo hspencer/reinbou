@@ -12,7 +12,7 @@ function setup() {
 	d = 90;
 	m = 5;
 	mode = true;
-	hueBitmap = loadImage("img/hueBitmap.png");
+	hueBitmap = loadImage("img/hueBitmap-mini.png");
 	col = color(0, 0, 0);
 	noStroke();
 	okButton = createButton('ok');
@@ -26,7 +26,7 @@ function setup() {
 	okButton.style("width", "60px");
 	okButton.style("height", "60px");
 	okButton.style("border-radius", "50%");
-	okButton.style("color", "rgba(0,0,0,.3)");
+	okButton.style("color", "rgba(0,0,0,.9)");
 	okButton.style("border", "4px solid rgba(0,0,0,.3)");
 }
 
@@ -57,10 +57,10 @@ function drawSelected(xpos, ypos) {
 	fill(col);
 	rect(m, m, width - 2*m, d - 2*m, m, m, m, m);
 	if(brightness(col) < 50){
-		okButton.style("color", "rgba(255,255,255,.5)");
+		okButton.style("color", "rgba(255,255,255,.9)");
 		okButton.style("border", "4px solid rgba(255,255,255,.5)");
 	}else{
-		okButton.style("color", "rgba(0,0,0,.3)");
+		okButton.style("color", "rgba(0,0,0,.9)");
 		okButton.style("border", "4px solid rgba(0,0,0,.3)");
 	}
 }
