@@ -4,22 +4,32 @@ this is the f**king reinbou color selector **
 
 */
 
-var d, col, hueBitmap;
+var d, m, col, hueBitmap, okButton;
 
 function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
 	rb.parent('reinbou');
-	d = width / 5;
-	d = constrain(d, 70, 200);
+	d = 90;
+	m = 5;
 	mode = true;
 	hueBitmap = loadImage("img/hueBitmap.png");
 	col = color(0, 0, 0);
 	noStroke();
+	okButton = createButton('ok');
+	okButton.parent('reinbou-container');
+	okButton.position(width - 75, 15);
+	okButton.mousePressed(sendColor);
+	okButton.style("font-size", "18px");
+	okButton.style("font-weight", "bolder");
+	okButton.style("background-color", "transparent");
+	okButton.style("width", "60px");
+	okButton.style("height", "60px");
+	okButton.style("border-radius", "50%");
+	okButton.style("color", "rgba(0,0,0,.3)");
+	okButton.style("border", "4px solid rgba(0,0,0,.3)");
 }
 
 function windowResized() {
-	d = width / 5;
-	d = constrain(d, 70, 200);
 	resizeCanvas(windowWidth, windowHeight);
 }
 
@@ -43,7 +53,18 @@ function touchMoved(){
 function drawSelected(xpos, ypos) {
 	col = get(xpos, ypos);
 	fill(col);
-	rect(0, 0, width, d);
+	rect(m, m, width - 2*m, d - 2*m, m, m, m, m);
+	if(brightness(col) < 50){
+		okButton.style("color", "rgba(255,255,255,.5)");
+		okButton.style("border", "4px solid rgba(255,255,255,.5)");
+	}else{
+		okButton.style("color", "rgba(0,0,0,.3)");
+		okButton.style("border", "4px solid rgba(0,0,0,.3)");
+	}
+}
+
+function sendColor(){
+	return col;
 }
 
 

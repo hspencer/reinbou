@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAWA,QAAQ,CACP,UAAU,CAAE,MAAM,CACf,UAAU,CAAE,MAAM",
-"sources": ["../sass/rb.scss"],
-"names": [],
-"file": "rb.css"
-}
