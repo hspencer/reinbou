@@ -31,6 +31,7 @@ function setup() {
 
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
+	okButton.position(width - 75, 15);
 }
 
 function draw() {
