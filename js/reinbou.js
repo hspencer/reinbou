@@ -20,6 +20,7 @@ function setup() {
 	okButton.position(width - 75, 15);
 	okButton.mousePressed(sendColor);
 	okButton.style("font-size", "18px");
+	okButton.style("text-align", "center");
 	okButton.style("font-weight", "bolder");
 	okButton.style("background-color", "transparent");
 	okButton.style("width", "60px");
