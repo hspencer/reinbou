@@ -4,45 +4,44 @@ this is the f**king reinbou color selector **
 
 */
 
-
 var d, col, hueBitmap;
 
 function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
-	colorMode(HSB, height, 1, 1, 1);
 	rb.parent('reinbou');
 	d = width / 5;
-	ellipseMode(CENTER);
+	d = constrain(d, 70, 200);
 	mode = true;
 	hueBitmap = loadImage("img/hueBitmap.png");
-	col = color(0);
+	col = color(0, 0, 0);
+	noStroke();
 }
 
 function windowResized() {
+	d = width / 5;
+	d = constrain(d, 70, 200);
 	resizeCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-	image(hueBitmap, 0, 0, width, height);
+	image(hueBitmap, 0, d, width, height-d);
+	if(mouseIsPressed){
+		drawSelected(mouseX, mouseY);
+	}
 }
 
-function touchMoved(){
-	image(hueBitmap, 0, 0, width, height);
+function touchStarted(){
+	image(hueBitmap, 0, d, width, height-d);
 	drawSelected(touchX, touchY);
 }
 
-function getColor(xpos, ypos) {
-	colorMode(RGB);
-	col = get(xpos, ypos);
-	return col;
+function touchMoved(){
+	image(hueBitmap, 0, d, width, height-d);
+	drawSelected(touchX, touchY);
 }
 
 function drawSelected(xpos, ypos) {
-	getColor(mouseX, mouseY);
-	stroke(0);
-	strokeWeight(5);
+	col = get(xpos, ypos);
 	fill(col);
-	var newX = constrain(xpos, d/2, width-(d/2));
-	var newY = constrain(ypos - d, d/2, height-(d/2));
-	ellipse(newX, newY, d, d);
+	rect(0, 0, width, d);
 }
