@@ -12,12 +12,12 @@ Currently pure p5js, no - to recompile css run:
 Construir una biblioteca js
 * para `<input type="color" id="nodeNum" class="rb">`
 
-
+```html
 <!-- create an element, pass in a pointer,
 and attach it to the body -->
 <!DOCTYPE html>
 <head>
-  <script src='p5.js'></script>
+  <script src='rb.js'></script>
 </head>
 <body>
   <script>
@@ -33,3 +33,4 @@ and attach it to the body -->
   </script>
 </body>
 </html>
+```
