@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="refresh" content="0; url=rb.html">
-    <title>reinbou color selector</title>
-    
-  </head>
-  <body>
-  	<input type="color" class='color-reinbou'>
-  </body>
+	<head>
+		<meta http-equiv="refresh" content="0; url=rb.html">
+		<title>Reinbou Color Selector</title>
+	</head>
+	<body>
+		<div id='reinbou-container'>
+			<input type="color" class='rb' id='node-01'>
+			<div id="reinbou" onmousedown="event.preventDefault ? event.preventDefault() : event.returnValue = false">
+				<!-- reinbou.js runs here -->
+			</div>
+		</div>
+	</body>
 </html>
