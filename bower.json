@@ -1,8 +1,30 @@
 {
   "name": "reinbou",
-  "author": "Herbert Spencer",
-  "version": "0.0.1",
-  "dependencies": {
-    "p5js"
-  }
+  "homepage": "https://github.com/hspencer/reinbou",
+  "authors": [
+    "Herbert Spencer <herbert.spencer@gmail.com>"
+  ],
+  "description": "a p5js based color selector gui package for touch-based applications",
+  "main": "js/reinbou",
+  "keywords": [
+    "color",
+    "gui",
+    "p5js",
+    "jquery",
+    "selector",
+    "color",
+    "picker"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+    "dependencies": [
+    "p5js": "~0.5.5",
+    "jquery": "~3.1.1"
+  ]
 }
