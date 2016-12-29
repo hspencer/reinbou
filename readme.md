@@ -1,17 +1,13 @@
 #reinbou
-
+## this is the f**king reinbou color selector 
 **reinbou** is a js color selector ui library element based on [p5.js](https://p5js.org)
-
-Currently pure p5js, no - to recompile css run:
-
-`sass --watch sass/rb.scss:css/rb.css --style compressed`
 
 
 ###To Do
 
 Construir una biblioteca js
-* para `<input type="color" id="nodeNum" class="rb">`
-
+* para cada instancia de `<input type="color" id="nodeNum" class="rb">`
+* construir dinámicamente el canvas estilo modal pantalla completa y al presionar el botón **ok** del selector, retorna la variable color y deja el `<input>` con `background-color`con la variable ingresada al arreglo de nodos.
 ```html
 <!-- create an element, pass in a pointer,
 and attach it to the body -->
