@@ -18,7 +18,7 @@ Tasks:
 
 Idea:
 
-* every time you click (or tap) on a `<input type="color" id="#####" class="rb">` a div is dinamically created with the p5js canvas (modal-like, fullscreen) nd closes with the **ok** button
+* every time you click (or tap) on a `<input type="color" id="#####" class="rb">` a div is dinamically created with the p5js canvas (modal-like, fullscreen). The modal closes with the **ok** button submitting the current color value.
 * the returned color value (in hex) is used to style the `background-color` of the input
 
 
