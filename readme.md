@@ -1,4 +1,4 @@
-#this f**king reinbou 
+#this is f**king reinbou 
 
 **reinbou** is a javascript color selector library for html `<input type='color'>` elements.
 
