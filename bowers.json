@@ -1,9 +1,0 @@
-{
-  "name": "reinbou",
-  "author": "Herbert Spencer",
-  "version": "0.0.1",
-  "dependencies": {
-    "p5js",
-    "jquery"
-  }
-}

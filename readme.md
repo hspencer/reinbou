@@ -1,6 +1,6 @@
 #this is f**king reinbou 
 
-**reinbou** is a javascript color selector library for html `<input type='color'>` elements.
+**Reinbou** is a [P5js](https://p5js.org)-based color selector gui package for touch-based applications. **Reinbou** is meant for `<input type='color'>` html elements.
 
 ###Dependencies
 
@@ -44,3 +44,4 @@ and attach it to the body -->
 </body>
 </html>
 ```
+![hspencer](./img/feliz.gif)
