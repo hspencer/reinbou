@@ -9,8 +9,9 @@ var d, m, col, hueBitmap, okButton;
 function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
 	rb.parent('reinbou');
+	cursor(CROSS);
 	d = 90; // height of top color bar
-	m = 5; // margin of top color bar
+	m = 5;  // margin of top color bar
 	mode = true;
 	hueBitmap = loadImage("img/hueBitmap-bw.png");
 	col = color(0, 0, 0);
