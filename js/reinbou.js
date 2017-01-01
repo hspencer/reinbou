@@ -12,7 +12,7 @@ function setup() {
 	d = 90; // height of top color bar
 	m = 5; // margin of top color bar
 	mode = true;
-	hueBitmap = loadImage("img/hueBitmap-mini.png");
+	hueBitmap = loadImage("img/hueBitmap-bw.png");
 	col = color(0, 0, 0);
 	noStroke();
 	okButton = createButton('ok');
