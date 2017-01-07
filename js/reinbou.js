@@ -4,18 +4,20 @@ this is the f**king reinbou color selector **
 
 */
 
-var d, m, col, hueBitmap, okButton;
+var d, m, col, hueBitmap, tempBitmap, okButton, modeButton, mode;
 
 function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
 	rb.parent('reinbou');
 	cursor(CROSS);
 	d = 90; // height of top color bar
-	m = 5;  // margin of top color bar
+	m = 5; // margin of top color bar
 	mode = true;
-	hueBitmap = loadImage("img/hueBitmap-bw.png");
+	hueBitmap = loadImage("img/hueBitmap.png");
+	tempBitmap = loadImage("img/tempBitmap.png");
 	col = color(0, 0, 0);
 	noStroke();
+
 	okButton = createButton('ok');
 	okButton.parent('reinbou-container');
 	okButton.position(width - 75, 15);
@@ -29,6 +31,20 @@ function setup() {
 	okButton.style("border-radius", "50%");
 	okButton.style("color", "rgba(0,0,0,.9)");
 	okButton.style("border", "4px solid rgba(0,0,0,.3)");
+
+	modeButton = createButton('m');
+	modeButton.parent('reinbou-container');
+	modeButton.position(m*3, 15);
+	modeButton.mousePressed(changeMode);
+	modeButton.style("font-size", "18px");
+	modeButton.style("text-align", "center");
+	modeButton.style("font-weight", "bolder");
+	modeButton.style("background-color", "grey");
+	modeButton.style("width", "60px");
+	modeButton.style("height", "60px");
+	modeButton.style("border-radius", "50%");
+	modeButton.style("color", "white");
+	modeButton.style("border", "4px solid white");
 }
 
 function windowResized() {
@@ -37,37 +53,53 @@ function windowResized() {
 }
 
 function draw() {
-	image(hueBitmap, 0, d, width, height-d);
-	if(mouseIsPressed){
+	if (mode) {
+		image(hueBitmap, 0, d, width, height - d);
+	} else {
+		image(tempBitmap, 0, d, width, height - d);
+	}
+	if (mouseIsPressed) {
 		drawSelected(mouseX, mouseY);
 	}
 }
 
-function touchStarted(){
-	image(hueBitmap, 0, d, width, height-d);
+function touchStarted() {
+	if (mode) {
+		image(hueBitmap, 0, d, width, height - d);
+	} else {
+		image(tempBitmap, 0, d, width, height - d);
+	}
 	drawSelected(touchX, touchY);
 }
 
-function touchMoved(){
-	image(hueBitmap, 0, d, width, height-d);
+function touchMoved() {
+	if (mode) {
+		image(hueBitmap, 0, d, width, height - d);
+	} else {
+		image(tempBitmap, 0, d, width, height - d);
+	}
 	drawSelected(touchX, touchY);
 }
 
 function drawSelected(xpos, ypos) {
 	col = get(xpos, ypos);
 	fill(col);
-	rect(m, m, width - 2*m, d - 2*m, m, m, m, m);
-	if(brightness(col) < 50){
+	rect(m, m, width - 2 * m, d - 2 * m, m, m, m, m);
+	if (brightness(col) < 50) {
 		okButton.style("color", "rgba(255,255,255,.9)");
 		okButton.style("border", "4px solid rgba(255,255,255,.5)");
-	}else{
+	} else {
 		okButton.style("color", "rgba(0,0,0,.9)");
 		okButton.style("border", "4px solid rgba(0,0,0,.3)");
 	}
 }
 
-function sendColor(){
+function sendColor() {
 	return col;
+}
+
+function changeMode() {
+	mode = !mode;
 }
 
 
@@ -75,53 +107,53 @@ function sendColor(){
 // Especially Crosswalk 12 and above (Chromium 41+) runtimes.
 
 window.addEventListener('load', function() {
-    var lastTouchY = 0 ;
-    var maybePreventPullToRefresh = false ;
+	var lastTouchY = 0;
+	var maybePreventPullToRefresh = false;
 
-    // Pull-to-refresh will only trigger if the scroll begins when the
-    // document's Y offset is zero.
+	// Pull-to-refresh will only trigger if the scroll begins when the
+	// document's Y offset is zero.
 
-    var touchstartHandler = function(e) {
-        if( e.touches.length != 1 ) {             
-            return ;
-        }
-        lastTouchY = e.touches[0].clientY ;
-        // maybePreventPullToRefresh = (preventPullToRefreshCheckbox.checked) && (window.pageYOffset == 0) ;
-        maybePreventPullToRefresh = (window.pageYOffset === 0) ;
-        //document.getElementById('txtLog').textContent = "maybePreventPullToRefresh: " + maybePreventPullToRefresh;
-    };
+	var touchstartHandler = function(e) {
+		if (e.touches.length != 1) {
+			return;
+		}
+		lastTouchY = e.touches[0].clientY;
+		// maybePreventPullToRefresh = (preventPullToRefreshCheckbox.checked) && (window.pageYOffset == 0) ;
+		maybePreventPullToRefresh = (window.pageYOffset === 0);
+		//document.getElementById('txtLog').textContent = "maybePreventPullToRefresh: " + maybePreventPullToRefresh;
+	};
 
-    // To suppress pull-to-refresh it is sufficient to preventDefault the
-    // first overscrolling touchmove.
+	// To suppress pull-to-refresh it is sufficient to preventDefault the
+	// first overscrolling touchmove.
 
-    var touchmoveHandler = function(e) {
-        var touchY = e.touches[0].clientY ;
-        var touchYDelta = touchY - lastTouchY ;
-        lastTouchY = touchY ;
+	var touchmoveHandler = function(e) {
+		var touchY = e.touches[0].clientY;
+		var touchYDelta = touchY - lastTouchY;
+		lastTouchY = touchY;
 
-        if (maybePreventPullToRefresh) {
-            maybePreventPullToRefresh = false ;
-            //if (touchYDelta > 0) {
-                e.preventDefault() ;
-                //document.getElementById('txtLog').textContent = "TouchY: " + touchYDelta;
-                // console.log("pull-to-refresh event detected") ;
-                return ;
-            //}
-        }
+		if (maybePreventPullToRefresh) {
+			maybePreventPullToRefresh = false;
+			//if (touchYDelta > 0) {
+			e.preventDefault();
+			//document.getElementById('txtLog').textContent = "TouchY: " + touchYDelta;
+			// console.log("pull-to-refresh event detected") ;
+			return;
+			//}
+		}
 
-        // if (preventScrollCheckbox.checked) {
-        //     e.preventDefault() ;
-        //     return ;
-        // }
+		// if (preventScrollCheckbox.checked) {
+		//     e.preventDefault() ;
+		//     return ;
+		// }
 
-        // if (preventOverscrollGlowCheckbox.checked) {
-        //     if (window.pageYOffset == 0 && touchYDelta > 0) {
-        //         e.preventDefault() ;
-        //         return ;
-        //     }
-        // }
-    };
+		// if (preventOverscrollGlowCheckbox.checked) {
+		//     if (window.pageYOffset == 0 && touchYDelta > 0) {
+		//         e.preventDefault() ;
+		//         return ;
+		//     }
+		// }
+	};
 
-    document.addEventListener('touchstart', touchstartHandler, false) ;
-    document.addEventListener('touchmove', touchmoveHandler, false) ;
-}) ;
+	document.addEventListener('touchstart', touchstartHandler, false);
+	document.addEventListener('touchmove', touchmoveHandler, false);
+});
