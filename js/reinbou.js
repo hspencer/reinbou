@@ -4,7 +4,10 @@ this is the f**king reinbou color selector **
 
 */
 
-var d, m, col, hueBitmap, tempBitmap, okButton, modeButton, mode;
+
+
+
+var d, m, col, hueBitmap, tempBitmap, hueRange, okButton;
 
 function setup() {
 	var rb = createCanvas(windowWidth, windowHeight);
@@ -32,19 +35,10 @@ function setup() {
 	okButton.style("color", "rgba(0,0,0,.9)");
 	okButton.style("border", "4px solid rgba(0,0,0,.3)");
 
-	modeButton = createButton('m');
-	modeButton.parent('reinbou-container');
-	modeButton.position(m*3, 15);
-	modeButton.mousePressed(changeMode);
-	modeButton.style("font-size", "18px");
-	modeButton.style("text-align", "center");
-	modeButton.style("font-weight", "bolder");
-	modeButton.style("background-color", "grey");
-	modeButton.style("width", "60px");
-	modeButton.style("height", "60px");
-	modeButton.style("border-radius", "50%");
-	modeButton.style("color", "white");
-	modeButton.style("border", "4px solid white");
+	hueRange = createSlider(0, 255, 255, 1);
+	hueRange.position(10, height - 38);
+	hueRange.style('width', ''+width - (m*4)+'px');
+	hueRange.class('rb-range');
 }
 
 function windowResized() {
@@ -52,32 +46,28 @@ function windowResized() {
 	okButton.position(width - 75, 15);
 }
 
+function bitmap(){
+	image(tempBitmap, 0, d, width, height - d * 1.5);
+	tint(255, hueRange.value());
+	image(hueBitmap, 0, d, width, height - d * 1.5);
+  noTint();
+}
+
 function draw() {
-	if (mode) {
-		image(hueBitmap, 0, d, width, height - d);
-	} else {
-		image(tempBitmap, 0, d, width, height - d);
-	}
+	bitmap();
 	if (mouseIsPressed) {
 		drawSelected(mouseX, mouseY);
 	}
+	// print(hueRange.value());
 }
 
 function touchStarted() {
-	if (mode) {
-		image(hueBitmap, 0, d, width, height - d);
-	} else {
-		image(tempBitmap, 0, d, width, height - d);
-	}
+	bitmap();
 	drawSelected(touchX, touchY);
 }
 
 function touchMoved() {
-	if (mode) {
-		image(hueBitmap, 0, d, width, height - d);
-	} else {
-		image(tempBitmap, 0, d, width, height - d);
-	}
+	bitmap();
 	drawSelected(touchX, touchY);
 }
 
