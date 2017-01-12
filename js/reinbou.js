@@ -44,6 +44,8 @@ function setup() {
 function windowResized() {
 	resizeCanvas(windowWidth, windowHeight);
 	okButton.position(width - 75, 15);
+	hueRange.position(10, height - 38);
+	hueRange.style('width', ''+width - (m*4)+'px');
 }
 
 function bitmap(){
@@ -72,15 +74,17 @@ function touchMoved() {
 }
 
 function drawSelected(xpos, ypos) {
-	col = get(xpos, ypos);
-	fill(col);
-	rect(m, m, width - 2 * m, d - 2 * m, m, m, m, m);
-	if (brightness(col) < 50) {
-		okButton.style("color", "rgba(255,255,255,.9)");
-		okButton.style("border", "4px solid rgba(255,255,255,.5)");
-	} else {
-		okButton.style("color", "rgba(0,0,0,.9)");
-		okButton.style("border", "4px solid rgba(0,0,0,.3)");
+	if(ypos > d && ypos <(height - d * 1.5)){
+		col = get(xpos, ypos);
+		fill(col);
+		rect(m, m, width - 2 * m, d - 2 * m, m, m, m, m);
+		if (brightness(col) < 50) {
+			okButton.style("color", "rgba(255,255,255,.9)");
+			okButton.style("border", "4px solid rgba(255,255,255,.5)");
+		} else {
+			okButton.style("color", "rgba(0,0,0,.9)");
+			okButton.style("border", "4px solid rgba(0,0,0,.3)");
+		}
 	}
 }
 
