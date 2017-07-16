@@ -1,24 +1,24 @@
-#this is f**king reinbou 
+# reinbou 
 
-**Reinbou** is a [P5js](https://p5js.org)-based color selector gui package for touch-based applications. **Reinbou** is meant for `<input type='color'>` html elements.
+**Reinbou** is a [P5js](https://p5js.org)-based color selector gui package for touch-based applications running in –preferably– small screens.
 
-###Dependencies
+ **Reinbou** is meant for `<input type='color'>` html elements.
+
+### Dependencies
 
 * [P5js](https://p5js.org)
 * [JQuery](https://jquery.com)
 
-###To Do
-
-Tasks:
+### Pending ToDos
 
 * built it as a reusable library:
-* instances of `<input type="color" id="#####" class="rb">` where **rb** is the reinbou class
-* Automate and compress js using gulp pr grunt from `src` to `js` directory. 
+* instances of `<input type="color" id="#####" class="reinbou">` 
+* Automate and compress js using gulp or grunt from `src` to `js` directory. 
 * make it jquery compatible
 
-Idea:
+#### Idea
 
-* every time you click (or tap) on a `<input type="color" id="#####" class="rb">` a div is dinamically created with the p5js canvas (modal-like, fullscreen). The modal closes with the **ok** button submitting the current color value.
+* every time you click (or tap) on a `<input type="color" id="#####" class="reinbou">` a div is dinamically created with the p5js canvas (modal-like, fullscreen). The modal closes with the **ok** button submitting the current color value.
 * the returned color value (in hex) is used to style the `background-color` of the input
 
 
